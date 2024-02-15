@@ -19,3 +19,5 @@ import jenkins.model.Jenkins
 def call(String name) {
     return Jenkins.instance.getGlobalNodeProperties()[0].getEnvVars()[name] ?: ''
 }
+
+git clone https://minaxijoshi3101@bitbucket.org/minaxijoshi3101/devops-automation.git
