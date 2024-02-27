@@ -1,10 +1,10 @@
 import hudson.util
 
+def call(body)
+{
 def agent = params.TARGET_SERVER
 def indServers = ["lxsehsg020","lxsehsg021"] as String[]
 def sitServerList 
-def call(body)
-{
     pipeline {
         agent { label 'devops_automation' }
         options {
@@ -17,22 +17,9 @@ def call(body)
         }
         stages {
             stage('Initialization'){
-                steps {
-                    script {
-                        switch(agent)
-                        {
-                            case "ALL IND":
-                                sitServerList = indServers
-                            break
-                            case "ALL SG":
-                                sitServerList = sgServers
-                            break
-                        }
-
-                    }
-                }
+                
             }
-            stage ("Checkout SCM from perticular region")
+            stage ("Checkout SCM")
             {
                 steps{
                     script {
@@ -42,7 +29,10 @@ def call(body)
                             {
                                 cleanWs()
                                 //clone the code from bitbucket repo
-                                def bitBucketURL = getGlobalPropertiesValue 'BitBucketUrl' 
+                                def gitHubURL = getGlobalPropertiesValue 'GitHubUrl'
+                                git url: "${gitHubURL}/devops-automation.git", branch: "development-hybrid" , credentialsId: 'devops_automation_buildUser'
+                                propertyFileName = body.getAt("PropertyFileName")
+                                propertyFolderName = body.getAt("PropertyFolderName")
                             }
                         }
                     }
