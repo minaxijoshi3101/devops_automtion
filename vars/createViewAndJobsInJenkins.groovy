@@ -6,9 +6,10 @@ timeout(time: 60, unit: 'MINUTES') {
 pipeline {
     Map jiraParams= [:]
     def JIRA_KEY = params.JIRA_ISSUE_KEY
-    agent {
+    /* agent {
         label 'devops_automation'
-    }
+    } */
+    agent any
     options {
         skipDefaultCheckout()
         timestamps()
