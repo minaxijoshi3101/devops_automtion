@@ -1,6 +1,6 @@
 import com.seh.utils.autoCreateJiraShell
 
-@Library("jenkins-shared-library")_
+@Library("devops_automation")_
 //@Library("jenkins-shared-library@feature/SI-280-do-ui-enhancements")_
 import com.seh.utils.*
 try 
