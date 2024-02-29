@@ -35,7 +35,7 @@ pipeline {
                 }
             }   
         }
-        stage("Create Repo & Jenkins Job") {
+        /* stage("Create Repo & Jenkins Job") {
             steps {
                 script {
                     for(repo in repoNames) {
@@ -45,7 +45,7 @@ pipeline {
                     }
                 }
             }   
-        }
+        } */
     }
     }
 }
