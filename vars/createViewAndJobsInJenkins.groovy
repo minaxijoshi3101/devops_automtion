@@ -1,5 +1,4 @@
-
-@Library("devops_automation@developmet-hybrid") _
+@Library("devops_automation")_
 //@Library("jenkins-shared-library@feature/SI-280-do-ui-enhancements")_
 try 
 {
