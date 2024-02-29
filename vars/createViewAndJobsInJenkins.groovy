@@ -1,5 +1,4 @@
-import com.seh.utils.autoCreateJob
-import com.seh.utils.*
+
 //@Library("devops_automation@developmet-hybrid") _
 //@Library("jenkins-shared-library@feature/SI-280-do-ui-enhancements")_
 try 
