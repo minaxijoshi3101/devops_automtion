@@ -17,7 +17,7 @@ def call(body) {
         }
         environment{
             BUILDSERVER_WORKSPACE = "${WORKSPACE}"
-            APP_CODE = params.APP_CODE
+            APP_CODE = "${params.APP_CODE}"
         }
         stages {
             stage("Create view in Jenkins") {
