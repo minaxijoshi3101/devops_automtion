@@ -33,7 +33,7 @@ def call(body) {
                         //logger.info('view will be created')
                         
                         // Save the view
-                        view.save()
+                        myView.save()
                         println "view created "+myView
                     }
                 }   
