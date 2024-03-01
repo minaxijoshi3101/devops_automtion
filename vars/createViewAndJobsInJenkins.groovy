@@ -1,6 +1,6 @@
-import java.util.logging.Logger
+//import java.util.logging.Logger
 def call(body) {
-    transient Logger logger = Logger.getLogger('com.seh.utils')
+   // transient Logger logger = Logger.getLogger('com.seh.utils')
     Map jiraParams= [:]
     def APP_CODE
     try {
@@ -25,7 +25,7 @@ def call(body) {
                     script {
                         def viewName = "${APP_CODE}"
                         def view = jenkins.model.Jenkins.instance.getView(viewName)
-                        logger.info('view will be created')
+                        //logger.info('view will be created')
                         if (view == null) {
                             view = new hudson.model.ListView(viewName)
                             jenkins.model.Jenkins.instance.addView(view)
