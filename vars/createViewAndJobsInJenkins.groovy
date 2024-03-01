@@ -2,6 +2,7 @@ import java.util.logging.Logger
 def call(body) {
     Logger logger = Logger.getLogger('com.seh.utils')
     Map jiraParams= [:]
+    def APP_CODE
     try {
     timeout(time: 60, unit: 'MINUTES') {
     pipeline {
