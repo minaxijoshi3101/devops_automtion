@@ -19,14 +19,14 @@ def call(body) {
         }
         environment{
             BUILDSERVER_WORKSPACE = "${WORKSPACE}"
-            APP_CODE = "${params.APP_CODE}"
+            APPLICATION_CODE = "${params.APP_CODE}"
         }
         stages {
             stage("Create view in Jenkins") {
                 steps {
                     script {
                         Jenkins jenkins = Jenkins.getInstance()
-                        def viewName = "${APP_CODE}"
+                        def viewName = "${APPLICATION_CODE}"
                         println "view name is "+viewName
                         jenkins.addView(new ListView(viewName))
                         // get the view
