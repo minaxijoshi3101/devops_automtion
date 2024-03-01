@@ -27,6 +27,7 @@ def call(body) {
                     script {
                         Jenkins jenkins = Jenkins.getInstance()
                         def viewName = "${APP_CODE}"
+                        println "view name is "+viewName
                         jenkins.addView(new ListView(viewName))
                         // get the view
                         def myView = hudson.model.Hudson.instance.getView(viewName)
