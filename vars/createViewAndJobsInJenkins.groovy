@@ -25,11 +25,13 @@ def call(body) {
                     script {
                         def viewName = "${APP_CODE}"
                         def view = jenkins.model.Jenkins.instance.getView(viewName)
+                        println "view is "+view
                         //logger.info('view will be created')
                         if (view == null) {
                             view = new hudson.model.ListView(viewName)
                             jenkins.model.Jenkins.instance.addView(view)
                         }
+                        println "view created "+view
                         // Save the view
                         view.save()
 
