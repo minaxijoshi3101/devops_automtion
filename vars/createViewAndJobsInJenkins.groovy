@@ -1,4 +1,5 @@
 //import java.util.logging.Logger
+import hudson.model.*
 def call(body) {
    // transient Logger logger = Logger.getLogger('com.seh.utils')
     Map jiraParams= [:]
