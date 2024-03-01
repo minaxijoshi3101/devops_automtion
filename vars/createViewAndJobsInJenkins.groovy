@@ -23,18 +23,18 @@ def call(body) {
             stage("Create view in Jenkins") {
                 steps {
                     script {
+                        Jenkins jenkins = Jenkins.getInstance()
                         def viewName = "${APP_CODE}"
-                        def view = jenkins.model.Jenkins.instance.getView(viewName)
-                        println "view is "+view
+                        jenkins.addView(new ListView(viewName))
+                        // get the view
+                        def myView = hudson.model.Hudson.instance.getView(viewName)
+
+                        println "view is "+myView
                         //logger.info('view will be created')
-                        if (view == null) {
-                            view = new hudson.model.ListView(viewName)
-                            jenkins.model.Jenkins.instance.addView(view)
-                        }
-                        println "view created "+view
+                        
                         // Save the view
                         view.save()
-
+                        println "view created "+myView
                     }
                 }   
             }
