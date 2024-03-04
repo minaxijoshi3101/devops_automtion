@@ -12,6 +12,9 @@ def call(String repo,String appName) {
             cd ${repo}
             # Retrieve Jenkins CSRF crumb
             CRUMB=\$(curl -s -u ${USER}:${PASSWORD} 'http://192.168.18.9:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+            
+            echo ${CRUMB}
+
             curl -XPOST 'http://192.168.18.9:8080/createItem?name=${appName}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22${appName}%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' --user ${USER}:${PASSWORD} -H ${CRUMB} -H "Content-Type:application/x-www-form-urlencoded"
             
             #curl -s -XPOST 'http://192.168.18.9:8080/job/${appName}/createItem?name=coverity_scan' --data-binary @coverity_scan.xml -H "Content-Type:text/xml" -u ${USER}:${PASSWORD}
