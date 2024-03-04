@@ -1,6 +1,7 @@
 package com.seh.utils;
 
 def call(String repo,String appName) {
+      def CRUMB
       sh "mkdir -p  ${repo}"
       def fileWriteSIT = libraryResource "jenkins_job_SIT.xml"
       writeFile file: "${repo}/sit_config.xml", text: fileWriteSIT
