@@ -45,7 +45,9 @@ def call(body) {
             stage("Create Jenkins Job") {
                 steps{
                     script{
-                        new autoCreateJob().call(repo,APPLICATION_CODE)
+                        for(repo in repoNames) {
+                            new autoCreateJob().call(repo,APPLICATION_CODE)
+                        }
                     }
                 }
             }
