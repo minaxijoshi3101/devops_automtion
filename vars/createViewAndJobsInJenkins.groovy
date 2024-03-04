@@ -5,6 +5,7 @@ def call(body) {
    // transient Logger logger = Logger.getLogger('com.seh.utils')
     Map jiraParams= [:]
     def APP_CODE
+    List<String> repoNames = Arrays.asList(params.REPO_NAME)
     try {
     timeout(time: 60, unit: 'MINUTES') {
     pipeline {
@@ -29,31 +30,27 @@ def call(body) {
                         Jenkins jenkins = Jenkins.getInstance()
                         def viewName = "${APPLICATION_CODE}"
                         println "view name is "+viewName
-                        jenkins.addView(new ListView(viewName))
-                        // get the view
                         def myView = hudson.model.Hudson.instance.getView(viewName)
-
-                        println "view is "+myView
-                        //logger.info('view will be created')
-                        
-                        // Save the view
+                        if (myView == null) {
+                        jenkins.addView(new ListView(viewName))
                         myView.save()
+                        // get the view
+                        }
+                        println "view is "+myView
                         println "view created "+myView
                         }
                     }
                 }   
             }
-            /* stage("Create Repo & Jenkins Job") {
+            stage("Create Repo & Jenkins Job") {
                 steps {
                     script {
                         for(repo in repoNames) {
-                            if(!exclusions.contains("Exclude Jenkins Jobs")){
-                                new autoCreateJob().call(repo,appName)
-                            } 
+                            new autoCreateRepos().call(repo,appName)
                         }
                     }
                 }   
-            } */
+            }
         }
         }
     }
