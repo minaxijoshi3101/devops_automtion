@@ -5,6 +5,7 @@ def call(body) {
    // transient Logger logger = Logger.getLogger('com.seh.utils')
     Map jiraParams= [:]
     def APP_CODE
+    String appName;
     List<String> repoNames = Arrays.asList(params.REPO_NAME)
     try {
     timeout(time: 60, unit: 'MINUTES') {
@@ -42,7 +43,14 @@ def call(body) {
                     }
                 }   
             }
-            stage("Create Repo & Jenkins Job") {
+            stage("Create Jenkins Job") {
+                steps{
+                    script{
+                        new autoCreateJob().call(repo,APPLICATION_CODE)
+                    }
+                }
+            }
+            /* stage("Create Repos") {
                 steps {
                     script {
                         for(repo in repoNames) {
@@ -50,7 +58,7 @@ def call(body) {
                         }
                     }
                 }   
-            }
+            } */
         }
         }
     }
