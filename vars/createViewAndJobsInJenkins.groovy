@@ -27,8 +27,7 @@ def call(body) {
         stages {
             stage("Create view in Jenkins") {
                 steps {
-                    steps {
-                        script{
+                    script{
                         Jenkins jenkins = Jenkins.getInstance()
                         def viewName = "${APPLICATION_CODE}"
                         println "view name is "+viewName
@@ -40,7 +39,6 @@ def call(body) {
                         }
                         println "view is "+myView
                         println "view created "+myView
-                        }
                     }
                 }   
             }
