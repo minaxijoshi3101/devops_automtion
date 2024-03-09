@@ -21,7 +21,7 @@ def call(String repo,String appName) {
 
             auth_token=”${USER}:${PASSWORD}”
 
-            http_response=\$(curl — cookie-jar ./cookie -s “http://192.168.18.11:8080/jenkins/crumbIssuer/api/json" --user ${auth_token})
+            http_response=\$(curl — cookie-jar ./cookie -s 'http://192.168.18.11:8080/jenkins/crumbIssuer/api/json' --user ${auth_token})
             CRUMB=\$(echo "${http_response}" | jq -r '.crumb')
             echo "${CRUMB}"
             echo "${auth_token}"
