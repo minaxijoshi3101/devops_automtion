@@ -25,7 +25,7 @@ def call(String repo,String appName) {
             #echo "${http_response}"
             #CRUMB=\$(echo "${http_response}" | jq -r '.crumb')
 
-            CRUMB=\$(curl --cookie-jar ./cookie -s 'http://192.168.18.11:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u ${USER}:${PASSWORD})
+            CRUMB=\$(curl -s 'http://192.168.18.11:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u ${USER}:${PASSWORD})
 
             echo "${CRUMB}"
             
