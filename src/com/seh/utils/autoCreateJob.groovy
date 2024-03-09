@@ -18,7 +18,15 @@ def call(String repo,String appName) {
             #curl -XPOST 'http://192.168.18.11:8080/createItem?name=${appName}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22${appName}%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' --user ${USER}:${PASSWORD} -H "Content-Type:application/x-www-form-urlencoded"
             echo "${USER}"
 
-            curl -X POST -u "${USER}:${PASSWORD}" "http://192.168.18.11:8080/jenkins/createItem?name=${appName}&mode=com.cloudbees.hudson.plugins.folder.Folder" -H "\$(curl -s 'http://192.168.18.11:8080/jenkins/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' --user ${USER}:${PASSWORD})" --data-urlencode "json={ 'name': '${appName}', 'mode': 'com.cloudbees.hudson.plugins.folder.Folder', 'Submit': 'OK' }"
+            auth_token=”${USER}:${PASSWORD}”
+
+            http_response=\$(curl — cookie-jar ./cookie -s “http://192.168.18.11:8080/jenkins/crumbIssuer/api/json" --user ${token})
+            crumb=\$(echo "${http_response}" | jq -r '.crumb')
+            echo "${crumb}"
+            echo "${auth_token}"
+            curl -XPOST --cookie “./cookie” 'http://192.168.18.11:8080/jenkins/createItem?name=${appName}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22${appName}%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' --user ${auth_token} -H "Content-Type:application/x-www-form-urlencoded" -H "${crumb}"
+
+            #curl -X POST -u "${USER}:${PASSWORD}" "http://192.168.18.11:8080/jenkins/createItem?name=${appName}&mode=com.cloudbees.hudson.plugins.folder.Folder" -H "\$(curl -s 'http://192.168.18.11:8080/jenkins/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' --user ${USER}:${PASSWORD})" --data-urlencode "json={ 'name': '${appName}', 'mode': 'com.cloudbees.hudson.plugins.folder.Folder', 'Submit': 'OK' }"
 
 
             #curl -XPOST 'http://192.168.18.11:8080/createItem?name=${appName}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22${appName}%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' --user ${USER}:${PASSWORD} -H "Content-Type:application/x-www-form-urlencoded"
