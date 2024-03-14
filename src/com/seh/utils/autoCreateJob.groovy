@@ -19,11 +19,18 @@ def call(String repo,String appName) {
             #curl -s -Lkgf -o out.html -n -X POST "http://192.168.18.11:8080/jenkins/${appName}/createItem?name=test&mode=com.cloudbees.hudson.plugins.folder.Folder&Submit=OK" --user ${USER}:${PASSWORD} -H "Content-Type:application/x-www-form-urlencoded"
 
             # Retrieve Jenkins CSRF crumb
-            CRUMB=\$(curl -s 'http://192.168.18.12:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u ${USER}:${PASSWORD})
+            #CRUMB=\$(curl -s 'http://192.168.18.12:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u ${USER}:${PASSWORD})
 
             #echo \$CRUMB
             # create folder
-            curl -XPOST 'http://192.168.18.12:8080/createItem?name=${appName}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22${appName}%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' --user ${USER}:${PASSWORD} -H "Content-Type:application/x-www-form-urlencoded" -H "\$CRUMB"
+            CRUMB=$(curl -s -u ${USER}:${PASSWORD} 'http://192.168.18.12:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+
+            curl -XPOST 'http://192.168.18.12:8080/createItem?name=SEH&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22SEH%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' \
+            --user ${USER}:${PASSWORD} \
+            -H "Content-Type:application/x-www-form-urlencoded" \
+            -H "\$CRUMB"
+
+            #curl -XPOST 'http://192.168.18.12:8080/createItem?name=${appName}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22${appName}%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' --user ${USER}:${PASSWORD} -H "Content-Type:application/x-www-form-urlencoded" -H "\$CRUMB"
             echo "${USER}"
 
             #auth_token=”${USER}:${PASSWORD}”
