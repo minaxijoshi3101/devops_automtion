@@ -12,14 +12,14 @@ def call(String repo,String appName) {
       sh """
             cd ${repo}
 
-            curl -v -X GET http://192.168.18.12:8080/jenkins/crumbIssuer/api/json --user ${USER}:${PASSWORD} 
+            curl -v -X GET http://192.168.18.12:8080/crumbIssuer/api/json --user ${USER}:${PASSWORD} 
 
             #curl -X POST 'http://192.168.18.11:8080/jenkins/createItem?name=${repo}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"${repo}","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK' --user ${USER}:${PASSWORD} -H "Content-Type:application/x-www-form-urlencoded"
 
             #curl -s -Lkgf -o out.html -n -X POST "http://192.168.18.11:8080/jenkins/${appName}/createItem?name=test&mode=com.cloudbees.hudson.plugins.folder.Folder&Submit=OK" --user ${USER}:${PASSWORD} -H "Content-Type:application/x-www-form-urlencoded"
 
             # Retrieve Jenkins CSRF crumb
-            CRUMB=\$(curl -s 'http://192.168.18.11:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u ${USER}:${PASSWORD})
+            CRUMB=\$(curl -s 'http://192.168.18.12:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)' -u ${USER}:${PASSWORD})
 
             #echo \$CRUMB
             # create folder
