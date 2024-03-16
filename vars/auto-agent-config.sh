@@ -25,7 +25,8 @@ rm -f agent.jar
 # input secret file content
 echo $agent_secret > secret-file
 # download jenkins agent
-curl -skO "jenkins_url/jnlpJars/agent.jar"
+#curl -skO "jenkins_url/jnlpJars/agent.jar"
+curl -sO "jenkins_url/jnlpJars/agent.jar"
 #download java jdk from nexus repo
 curl -kO -u $lanid http://192.168.18.6:8082/repository/my-repo/jdk-21_linux-x64_bin.tar.gz
 tar -xvf jdk-21_linux-x64_bin.tar.gz
