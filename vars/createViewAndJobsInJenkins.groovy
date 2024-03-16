@@ -10,7 +10,6 @@ def call(body) {
     List<String> repoNames = Arrays.asList(params.REPO_NAME)
     try {
     timeout(time: 60, unit: 'MINUTES') {
-    node{
     pipeline {
         /* agent {
             label 'devops_automation'
@@ -63,7 +62,6 @@ def call(body) {
             } */
         }
         }
-    }
     }
     }   catch (err) {
             echo "Caught: ${err}"
