@@ -69,8 +69,7 @@ def call(body) {
                     }
                 }
             }
-        }
-    }  catch (err) {
+        } catch (err) {
         echo "Caught: ${err}"
         throw err
     }finally {
