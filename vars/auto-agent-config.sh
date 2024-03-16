@@ -7,7 +7,7 @@ lanid='minaxi:minaxi'
 agent_ws_path=$1
 agent_secret=$2
 agent_name=$3
-jenkins_url="http://192.168.18.10:8080/"
+jenkins_url="http://192.168.18.6:8080/"
 
 echo "PLEASE CONFIRM AS BELOW INFO"
 echo "================================================="
