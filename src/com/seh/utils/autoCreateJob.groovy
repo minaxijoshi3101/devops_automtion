@@ -9,7 +9,7 @@ def call(String repo,String appName) {
                         def auth_token
                         sh "mkdir -p  ${repo}"
                         def fileWriteSIT = libraryResource "jenkins_job_SIT.xml"
-                        file: "${repo}/sit_config.xml", text: fileWriteSIT
+                        writeFile file: "${repo}/sit_config.xml", text: fileWriteSIT
                         def http_response
                         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'svc_devops_jenkins_token',
                         usernameVariable: 'USER', passwordVariable: 'PASSWORD']]) {
