@@ -15,7 +15,7 @@ def call(body) {
         /* agent {
             label 'devops_automation'
         } */
-        agent any
+        agent { label 'lxsehin003'}
         options {
             skipDefaultCheckout()
             timestamps()
