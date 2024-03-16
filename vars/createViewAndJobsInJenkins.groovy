@@ -64,7 +64,6 @@ def call(body) {
                 post {
                     always {
                         script {
-                            getContext()
                             deleteDir() 
                         }
                     }
