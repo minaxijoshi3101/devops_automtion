@@ -27,6 +27,7 @@ echo $agent_secret > secret-file
 # download jenkins agent
 #curl -skO "jenkins_url/jnlpJars/agent.jar"
 curl -sO "jenkins_url/jnlpJars/agent.jar"
+chmod +x agent.jar
 #download java jdk from nexus repo
 curl -kO -u $lanid http://192.168.18.6:8082/repository/my-repo/jdk-21_linux-x64_bin.tar.gz
 tar -xvf jdk-21_linux-x64_bin.tar.gz
@@ -46,5 +47,5 @@ chmod +x agent-start.sh
 
 sh agent-start.sh
 
-to run 
-./auto-agent-config.sh '/prodlib/SEH/jenkins' d11b9fe5f40395fb1461027e2bc98d2a5fe59e55df7b31441c5a1dac1512d318 lxsehin003
+#to run 
+#./auto-agent-config.sh '/prodlib/SEH/jenkins' d11b9fe5f40395fb1461027e2bc98d2a5fe59e55df7b31441c5a1dac1512d318 lxsehin003
