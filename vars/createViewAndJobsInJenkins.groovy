@@ -64,9 +64,8 @@ def call(body) {
                 post {
                     always {
                         script {
-                            if (getContext(hudson.FilePath)) {
-                                deleteDir()
-                            }
+                            getContext()
+                            deleteDir() 
                         }
                     }
                 }
