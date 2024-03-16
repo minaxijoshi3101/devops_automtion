@@ -8,12 +8,9 @@ def call(body) {
     def APP_CODE
     String appName;
     List<String> repoNames = Arrays.asList(params.REPO_NAME)
-    try {
-        timeout(time: 60, unit: 'MINUTES') {
+   // try {
+       // timeout(time: 60, unit: 'MINUTES') {
             pipeline {
-                /* agent {
-                    label 'devops_automation'
-                } */
                 agent { label 'lxsehin003' }
                 options {
                     skipDefaultCheckout()
@@ -73,10 +70,10 @@ def call(body) {
                 }
             }
         }
-    }  catch (err) {
+    /* }  catch (err) {
         echo "Caught: ${err}"
         throw err
     }finally {
         cleanWs()
-    }
-}
+    } */
+//}
