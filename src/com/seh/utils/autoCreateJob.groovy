@@ -26,7 +26,7 @@ def call(String repo,String appName) {
                         } 
                   }
             }
-      catch(Exception e)
+      } catch(Exception e)
       {
             echo "Caught: ${e}"
             throw e
