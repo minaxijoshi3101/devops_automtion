@@ -3,7 +3,7 @@ package com.seh.utils;
 
 def call(String repo,String appName) {
       try{
-            dir("$WORKSPACE"){
+            //dir("$WORKSPACE"){
                   node {
                         def CRUMB
                         def auth_token
@@ -25,7 +25,7 @@ def call(String repo,String appName) {
                               """
                         } 
                   }
-            }
+            //}
       } catch(Exception e)
       {
             echo "Caught: ${e}"
