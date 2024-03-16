@@ -10,6 +10,7 @@ def call(body) {
     List<String> repoNames = Arrays.asList(params.REPO_NAME)
     try {
     timeout(time: 60, unit: 'MINUTES') {
+    node{
     pipeline {
         /* agent {
             label 'devops_automation'
@@ -44,8 +45,7 @@ def call(body) {
             }
             stage("Create Jenkins Job") {
                 steps{
-                    node {
-                    //script{
+                    script{
                         for(repo in repoNames) {
                             new autoCreateJob().call(repo,APPLICATION_CODE)
                         }
@@ -63,6 +63,7 @@ def call(body) {
             } */
         }
         }
+    }
     }
     }   catch (err) {
             echo "Caught: ${err}"
