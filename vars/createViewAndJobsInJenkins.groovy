@@ -8,7 +8,7 @@ def call(body) {
     def APP_CODE
     String appName;
     List<String> repoNames = Arrays.asList(params.REPO_NAME)
-   // try {
+    try {
        // timeout(time: 60, unit: 'MINUTES') {
             pipeline {
                 agent { label 'lxsehin003' }
@@ -70,10 +70,10 @@ def call(body) {
                 }
             }
         }
-    /* }  catch (err) {
+    }  catch (err) {
         echo "Caught: ${err}"
         throw err
     }finally {
         cleanWs()
-    } */
+    }
 //}
