@@ -15,11 +15,11 @@ def call(String repo,String appName) {
             cd ${repo}
 
             # Retrieve Jenkins CSRF crumb
-            CRUMB=\$(curl -s -u ${USER}:1118a269715e91e16144ecae875f87060f 'http://192.168.18.12:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+            CRUMB=\$(curl -s -u ${USER}:1118a269715e91e16144ecae875f87060f 'http://192.168.18.6:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
 
             echo \$CRUMB
 
-            curl -XPOST 'http://192.168.18.12:8080/createItem?name=${repo}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22SEH%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' \
+            curl -XPOST 'http://192.168.18.6:8080/createItem?name=${repo}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22SEH%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' \
             -u "${USER}:1118a269715e91e16144ecae875f87060f" \
             -H "Content-Type:application/x-www-form-urlencoded" \
             -H "\$CRUMB"
