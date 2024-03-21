@@ -49,7 +49,7 @@ def call(body) {
                             }
                         }
                     }
-                    /* stage("Create Repos") {
+                    stage("Create Repos") {
                         steps {
                             script {
                                 for(repo in repoNames) {
@@ -57,7 +57,7 @@ def call(body) {
                                 }
                             }
                         }   
-                    } */
+                    }
                 }
                 post {
                     always {
