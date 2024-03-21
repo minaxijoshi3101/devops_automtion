@@ -7,7 +7,7 @@ def call(body) {
     Map jiraParams= [:]
     def APP_CODE
     String appName;
-    List<String> repoNames = "${params.REPO_NAMES}".split(',')
+    def repoNames = "${params.REPO_NAMES}".split(',')
     try {
     timeout(time: 60, unit: 'MINUTES') {
     node{
