@@ -1,0 +1,54 @@
+<flow-definition plugin="workflow-job@1346.v180a_63f40267">
+<actions/>
+<description/>
+<keepDependencies>false</keepDependencies>
+<properties>
+<hudson.model.ParametersDefinitionProperty>
+<parameterDefinitions>
+<org.biouno.unochoice.ChoiceParameter plugin="uno-choice@2.8.1">
+<name>JENKINS_NODE</name>
+<randomName>choice-parameter-153850984981097</randomName>
+<visibleItemCount>1</visibleItemCount>
+<script class="org.biouno.unochoice.model.GroovyScript">
+<secureScript plugin="script-security@1294.v99333c047434">
+<script>[Jenkins_Agent_Sonar_Scanner]</script>
+<sandbox>false</sandbox>
+</secureScript>
+<secureFallbackScript plugin="script-security@1294.v99333c047434">
+<script/>
+<sandbox>false</sandbox>
+</secureFallbackScript>
+</script>
+<projectName>sonar_scan</projectName>
+<projectFullName>SEH_common/coverity_scan</projectFullName>
+<choiceType>PT_SINGLE_SELECT</choiceType>
+<filterable>false</filterable>
+<filterLength>1</filterLength>
+</org.biouno.unochoice.ChoiceParameter>
+</parameterDefinitions>
+</hudson.model.ParametersDefinitionProperty>
+</properties>
+<definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@3791.va_c0338ea_b_59c">
+<scm class="hudson.plugins.git.GitSCM" plugin="git@5.2.1">
+<configVersion>2</configVersion>
+<userRemoteConfigs>
+<hudson.plugins.git.UserRemoteConfig>
+<url>https://github.com/minaxijoshi3101/devops_automtion.git</url>
+<credentialsId>devops_automation_buildUser</credentialsId>
+</hudson.plugins.git.UserRemoteConfig>
+</userRemoteConfigs>
+<branches>
+<hudson.plugins.git.BranchSpec>
+<name>*/master</name>
+</hudson.plugins.git.BranchSpec>
+</branches>
+<doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+<submoduleCfg class="empty-list"/>
+<extensions/>
+</scm>
+<scriptPath>vars/sonar_scanner.groovy</scriptPath>
+<lightweight>true</lightweight>
+</definition>
+<triggers/>
+<disabled>false</disabled>
+</flow-definition>
