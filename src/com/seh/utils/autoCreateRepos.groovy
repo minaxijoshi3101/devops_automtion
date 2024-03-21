@@ -10,7 +10,7 @@ def call(String repo,String appName) {
     def repoConfigJson 
     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'githubToken')]) {
         sh """
-            repoConfigJson=$(cat <<EOF
+            repoConfigJson=\$(cat <<EOF
             {
             "name": "${repoName}",
             "private": false,
