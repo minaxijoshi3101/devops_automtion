@@ -50,11 +50,18 @@ def call(String repo,String appName) {
                         --user ${USER}:1118a269715e91e16144ecae875f87060f \
                         -H "Content-Type:application/x-www-form-urlencoded" \
                         -H "\$CRUMB"
-
-                        #Create jenkins job
-                        curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/job/${repo}/job/SIT/createItem?name=build_and_deployment' --data-binary @sit_config.xml -H "Content-Type:text/xml" -u ${USER}:1118a269715e91e16144ecae875f87060f -H "\$CRUMB"
 		
                         #Create build and depolyment job
+                        #Create jenkins job
+                        curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/job/${repo}/job/SIT/createItem?name=build_and_deployment' --data-binary @sit_config.xml -H "Content-Type:text/xml" -u ${USER}:1118a269715e91e16144ecae875f87060f -H "\$CRUMB"
+
+                        curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/job/${repo}/job/UAT/createItem?name=build_and_deployment' --data-binary @sit_config.xml -H "Content-Type:text/xml" -u ${USER}:1118a269715e91e16144ecae875f87060f -H "\$CRUMB"
+
+                        curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/job/${repo}/job/PRE-PROD/createItem?name=release_deployment' --data-binary @sit_config.xml -H "Content-Type:text/xml" -u ${USER}:1118a269715e91e16144ecae875f87060f -H "\$CRUMB"
+
+                        curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/job/${repo}/job/PROD/createItem?name=release_deployment' --data-binary @sit_config.xml -H "Content-Type:text/xml" -u ${USER}:1118a269715e91e16144ecae875f87060f -H "\$CRUMB"
+
+                        curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/job/${repo}/job/SIT/createItem?name=rollback_deployment' --data-binary @sit_config.xml -H "Content-Type:text/xml" -u ${USER}:1118a269715e91e16144ecae875f87060f -H "\$CRUMB"
 
                   """
             } 
