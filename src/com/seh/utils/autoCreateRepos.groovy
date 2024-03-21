@@ -4,7 +4,8 @@ def call(String repo,String appName) {
     def githubUrl = 'https://api.github.com/user/repos'
     def owner = 'minaxijoshi3101'
     def repoName = "${repo}"
-
+    def command
+    def process
     // Define repository configuration JSON payload
     def repoConfigJson = """
     {
@@ -17,8 +18,8 @@ def call(String repo,String appName) {
     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'githubToken')]) {
         sh """
             // Execute cURL command to create the repository
-            def command = "curl -X POST -H 'Authorization: token ${githubToken}' -d '${repoConfigJson}' ${githubUrl}"
-            def process = command.execute()
+            command = "curl -X POST -H 'Authorization: token ${githubToken}' -d '${repoConfigJson}' ${githubUrl}"
+            process = command.execute()
             process.waitFor()
             // Check if the repository creation was successful
             if (process.exitValue() == 0) {
