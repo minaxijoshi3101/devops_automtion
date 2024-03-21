@@ -7,7 +7,7 @@ def call(body) {
     Map jiraParams= [:]
     def APP_CODE
     String appName;
-    List<String> repoNames = Arrays.asList(params.REPO_NAME)
+    List<String> repoNames = Arrays.asList(params.REPO_NAMES.split(','))
     try {
     timeout(time: 60, unit: 'MINUTES') {
     node{
@@ -46,6 +46,7 @@ def call(body) {
             stage("Create Jenkins Job") {
                 steps{
                     script{
+                        println "reponames are"+repoNames
                         for(repo in repoNames) {
                             new autoCreateJob().call(repo,APPLICATION_CODE)
                         }
