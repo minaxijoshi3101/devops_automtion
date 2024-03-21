@@ -20,15 +20,15 @@ def call(String repo,String appName) {
             // Execute cURL command to create the repository
             command = "curl -X POST -H 'Authorization: token ${githubToken}' -d '${repoConfigJson}' ${githubUrl}"
             process = command.execute()
-            process.waitFor()
-            // Check if the repository creation was successful
-            if (process.exitValue() == 0) {
-                println "Repository ${repoName} created successfully on GitHub."
-            } else {
-                println "Failed to create repository ${repoName}."
-                println "Error: ${process.err.text}"
-            }
         """
+        process.waitFor()
+        // Check if the repository creation was successful
+        if (process.exitValue() == 0) {
+            println "Repository ${repoName} created successfully on GitHub."
+        } else {
+            println "Failed to create repository ${repoName}."
+            println "Error: ${process.err.text}"
+        }
     }
     try{
     } catch (Exception e) {
