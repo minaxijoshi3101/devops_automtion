@@ -20,7 +20,7 @@
 </secureFallbackScript>
 </script>
 <projectName>sonar_scan</projectName>
-<projectFullName>SEH_common/coverity_scan</projectFullName>
+<projectFullName>SEH_common/sonar_scan</projectFullName>
 <choiceType>PT_SINGLE_SELECT</choiceType>
 <filterable>false</filterable>
 <filterLength>1</filterLength>
