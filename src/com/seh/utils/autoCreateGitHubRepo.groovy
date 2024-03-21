@@ -16,6 +16,10 @@ def call(String repo,String appName) {
     "gitignore_template": "nanoc"
     }
     """
+    withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'githubToken')]) {
+        sh """
+        """
+    }
     try{
     } catch (Exception e) {
         echo "Caught: ${e}"
