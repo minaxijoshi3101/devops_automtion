@@ -1,5 +1,5 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
 <flow-definition plugin="workflow-job@1346.v180a_63f40267">
-<actions/>
 <description/>
 <keepDependencies>false</keepDependencies>
 <properties>
@@ -7,7 +7,7 @@
 <parameterDefinitions>
 <org.biouno.unochoice.ChoiceParameter plugin="uno-choice@2.8.1">
 <name>JENKINS_NODE</name>
-<randomName>choice-parameter-153850984981097</randomName>
+<randomName>choice-parameter-159165028238701</randomName>
 <visibleItemCount>1</visibleItemCount>
 <script class="org.biouno.unochoice.model.GroovyScript">
 <secureScript plugin="script-security@1294.v99333c047434">
