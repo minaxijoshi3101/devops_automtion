@@ -20,7 +20,7 @@ def call(String repo,String appName) {
                         echo \$CRUMB
                        
                         #create sonar scan common job for all the modules
-                        curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/createItem?name=sonar_scan' --data-binary @sonar_scan.xml -H "Content-Type:text/xml" -u "${USER}:1118a269715e91e16144ecae875f87060f" -H "\$CRUMB"
+                        curl -s -XPOST 'http://192.168.18.6:8080/createItem?name=sonar_scan' --data-binary @sonar_scan.xml -H "Content-Type:text/xml" -u "${USER}:1118a269715e91e16144ecae875f87060f" -H "\$CRUMB"
 
                         #Create folder as per repo name
                         curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/createItem?name=${repo}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22SEH%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' \
