@@ -19,7 +19,7 @@ def call(String repo,String appName) {
     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'githubToken')]) {
         sh """
             #Execute cURL command to create the repository
-            command="curl -X POST -H "Authorization: token ${githubToken}" -d "${repoConfigJson}" "${githubUrl}""
+            command="curl -X POST -H Authorization: token ${githubToken} -d ${repoConfigJson} ${githubUrl}"
             echo "Executing: \${command}"
             \${command}
         """
