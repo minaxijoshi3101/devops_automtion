@@ -6,19 +6,18 @@ def call(String repo,String appName) {
     def repoName = "${repo}"
     def command
     def process
+    def repoConfigJson = """
+    {
+    "name": "${repoName}",
+    "private": false,
+    "auto_init": true,
+    "gitignore_template": "nanoc"
+    }
+    """
     // Define repository configuration JSON payload
     def repoConfigJson 
     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'githubToken')]) {
         sh """
-            repoConfigJson=\$(cat <<EOF
-            {
-            "name": "${repoName}",
-            "private": false,
-            "auto_init": true,
-            "gitignore_template": "nanoc"
-            }
-            EOF
-            )
             #Execute cURL command to create the repository
             command="curl -X POST -H 'Authorization: token \${githubToken}' -d '${repoConfigJson}' \${githubUrl}"
             echo "Executing: \${command}"
