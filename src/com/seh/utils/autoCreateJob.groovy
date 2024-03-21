@@ -20,8 +20,8 @@ def call(String repo,String appName) {
                         echo \$CRUMB
                        
                         #create sonar scan common job for all the modules
-                        
-                        curl -XPOST 'http://192.168.18.6:8080/job/SEH_SIT/createItem?name=sonar_scan' \
+
+                        curl -XPOST 'http://192.168.18.6:8080/view/SEH/createItem?name=sonar_scan' \
                         --data-binary @sonar_scan.xml \
                         -H "Content-Type:text/xml" \
                         -u "${USER}:1118a269715e91e16144ecae875f87060f" \

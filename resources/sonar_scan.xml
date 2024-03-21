@@ -2,7 +2,32 @@
 <actions/>
 <description/>
 <keepDependencies>false</keepDependencies>
-<properties/>
+<properties>
+<hudson.model.ParametersDefinitionProperty>
+<parameterDefinitions>
+<org.biouno.unochoice.ChoiceParameter plugin="uno-choice@2.8.1">
+<name>JENKINS_NODE</name>
+<randomName>choice-parameter-166359368661429</randomName>
+<visibleItemCount>1</visibleItemCount>
+<script class="org.biouno.unochoice.model.GroovyScript">
+<secureScript plugin="script-security@1294.v99333c047434">
+<script>[Jenkins_Agent_Coverity_Scanner]</script>
+<sandbox>false</sandbox>
+</secureScript>
+<secureFallbackScript plugin="script-security@1294.v99333c047434">
+<script/>
+<sandbox>false</sandbox>
+</secureFallbackScript>
+</script>
+<projectName>sonar_scan</projectName>
+<projectFullName>SEH_common/sonar_scan</projectFullName>
+<choiceType>PT_SINGLE_SELECT</choiceType>
+<filterable>false</filterable>
+<filterLength>1</filterLength>
+</org.biouno.unochoice.ChoiceParameter>
+</parameterDefinitions>
+</hudson.model.ParametersDefinitionProperty>
+</properties>
 <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@3791.va_c0338ea_b_59c">
 <scm class="hudson.plugins.git.GitSCM" plugin="git@5.2.1">
 <configVersion>2</configVersion>
