@@ -16,14 +16,14 @@ def call(String repo,String appName) {
                   sh """
                         cd ${repo}
                         # Retrieve Jenkins CSRF crumb using username and API token
-                        #CRUMB=\$(curl -s -u ${USER}:1118a269715e91e16144ecae875f87060f 'http://192.168.18.6:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+                        CRUMB=\$(curl -s -u ${USER}:1118a269715e91e16144ecae875f87060f 'http://192.168.18.6:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+                        
                         echo \$CRUMB
                        
                         #create sonar scan common job for all the modules
 
                         #Create folder as per repo name
-                        #curl -s -XPOST 'http://192.168.18.6:8080/view/SEH/createItem?name=${repo}&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json=%7B%22name%22%3A%22SEH%22%2C%22mode%22%3A%22com.cloudbees.hudson.plugins.folder.Folder%22%2C%22from%22%3A%22%22%2C%22Submit%22%3A%22OK%22%7D&Submit=OK' -u "${USER}:1118a269715e91e16144ecae875f87060f" -H "Content-Type:application/x-www-form-urlencoded" -H "\$CRUMB"
-
+                        #
                         curl -XPOST 'http://192.168.18.6:8080/view/SEH/job/${repo}/createItem?name=SIT&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"SIT","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK' \
                         -u ${USER}:1118a269715e91e16144ecae875f87060f \
                         -H "Content-Type: application/x-www-form-urlencoded" \
