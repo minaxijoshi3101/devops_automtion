@@ -15,7 +15,7 @@ def call(String repo,String appName) {
     }
     """
     // Define repository configuration JSON payload
-    def repoConfigJson 
+    //def repoConfigJson 
     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'githubToken')]) {
         sh """
             #Execute cURL command to create the repository
