@@ -20,9 +20,9 @@ def call(String repo,String appName) {
             EOF
             )
             #Execute cURL command to create the repository
-            command = "curl -X POST -H Authorization: token ${githubToken} -d ${repoConfigJson} ${githubUrl}"
-            echo "Executing: ${command}"
-            ${command}
+            command="curl -X POST -H 'Authorization: token \${githubToken}' -d '${repoConfigJson}' \${githubUrl}"
+            echo "Executing: \${command}"
+            \${command}
         """
         /*process.waitFor()
          // Check if the repository creation was successful
