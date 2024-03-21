@@ -9,26 +9,27 @@ def call(String repo,String appName) {
     // Define repository configuration JSON payload
     def repoConfigJson = """
     {
-    "name": "${repoName}",
-    "private": false,
-    "auto_init": true,
-    "gitignore_template": "nanoc"
+    \"name\": \"${repoName}\",
+    \"private\": false,
+    \"auto_init\": true,
+    \"gitignore_template\": \"nanoc\"
     }
     """
     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'githubToken')]) {
         sh """
             #Execute cURL command to create the repository
             command = "curl -X POST -H 'Authorization: token ${githubToken}' -d '${repoConfigJson}' ${githubUrl}"
-            process = command.execute()
+            echo "Executing: \${command}"
+            \${command}
         """
         process.waitFor()
-        // Check if the repository creation was successful
+        /* // Check if the repository creation was successful
         if (process.exitValue() == 0) {
             println "Repository ${repoName} created successfully on GitHub."
         } else {
             println "Failed to create repository ${repoName}."
             println "Error: ${process.err.text}"
-        }
+        } */
     }
     try{
     } catch (Exception e) {
