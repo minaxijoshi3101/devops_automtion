@@ -42,12 +42,10 @@ def call(body) {
                     stage("Create Jenkins Job") {
                         steps{
                             script{
-                                /* dir("${BUILDSERVER_WORKSPACE}")
-                                { */
+                                println "repoNames"+repoNames
                                 for(repo in repoNames) {
                                     new autoCreateJob().call(repo,APPLICATION_CODE)
                                 }
-                                //}
                             }
                         }
                     }
