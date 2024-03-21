@@ -27,7 +27,7 @@ def call(String repo,String appName) {
                         curl -XPOST 'http://192.168.18.6:8080/view/SEH/job/${repo}/createItem?name=SIT&mode=com.cloudbees.hudson.plugins.folder.Folder&from=&json={"name":"SIT","mode":"com.cloudbees.hudson.plugins.folder.Folder","from":"","Submit":"OK"}&Submit=OK' \
                         -u ${USER}:1118a269715e91e16144ecae875f87060f \
                         -H "Content-Type: application/x-www-form-urlencoded" \
-                        -H "\$CRUMB
+                        -H "\$CRUMB"
 
                         #Create jenkins job
                         #Create build and depolyment job
