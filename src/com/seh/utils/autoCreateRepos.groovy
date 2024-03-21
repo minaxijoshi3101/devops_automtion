@@ -7,23 +7,25 @@ def call(String repo,String appName) {
     def command
     def process
     // Define repository configuration JSON payload
-    def repoConfigJson = """
-    {
-    \"name\": \"${repoName}\",
-    \"private\": false,
-    \"auto_init\": true,
-    \"gitignore_template\": \"nanoc\"
-    }
-    """
+    def repoConfigJson 
     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'githubToken')]) {
         sh """
+            repoConfigJson=$(cat <<EOF
+            {
+            "name": "${repoName}",
+            "private": false,
+            "auto_init": true,
+            "gitignore_template": "nanoc"
+            }
+            EOF
+            )
             #Execute cURL command to create the repository
-            command = "curl -X POST -H 'Authorization: token \${githubToken}' -d '${repoConfigJson}' \${githubUrl}"
-            echo "Executing: \${command}"
-            \${command}
+            command = "curl -X POST -H Authorization: token ${githubToken} -d ${repoConfigJson} ${githubUrl}"
+            echo "Executing: ${command}"
+            ${command}
         """
-        process.waitFor()
-        /* // Check if the repository creation was successful
+        /*process.waitFor()
+         // Check if the repository creation was successful
         if (process.exitValue() == 0) {
             println "Repository ${repoName} created successfully on GitHub."
         } else {
