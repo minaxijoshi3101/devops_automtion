@@ -29,8 +29,8 @@ pipeline {
                             def dbscriptsExists = fileExists('cbo/dbscripts')
                             if (dbscriptsExists) {
                                 // Remove files from dbscripts folder
-                                sh "rm -rf dbscripts/*"
-                                sh "touch ${fileName}"
+                                sh "rm -rf cbo/dbscripts/*"
+                                sh "touch cbo/dbscripts/${fileName}"
                             } else {
                                 echo 'dbscripts folder does not exist'
                             }
