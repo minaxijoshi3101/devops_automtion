@@ -30,7 +30,7 @@ pipeline {
                             if (dbscriptsExists) {
                                 // Remove files from dbscripts folder
                                 sh "rm -rf dbscripts/*"
-                                sh 'touch $fileName'
+                                sh "touch ${fileName}"
                             } else {
                                 echo 'dbscripts folder does not exist'
                             }
