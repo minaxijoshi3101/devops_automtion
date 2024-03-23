@@ -14,9 +14,13 @@ def call()
                         def random = new Random()
                         def randomNumber = random.nextInt(1000)
                         def fileName = "test_${randomNumber}.txt"
-                        withCredentials([usernamePassword(credentialsId: 'your-git-credentials-id', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                        withCredentials([usernamePassword(credentialsId: 'devops_automation_buildUser', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                            sh """
+                            git clone https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/minaxijoshi3101/seh-students.git
+                            """
                             // Checkout release/t3 branch
                             sh 'git checkout release/t3'
+                            sh 'git config http:sslVerify false'
                             // Create and checkout new branch
                             sh 'git checkout -b release/t3_1.2.3.4'
                             // Check if dbscripts folder exists
