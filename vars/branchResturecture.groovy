@@ -17,7 +17,7 @@ pipeline {
                     println fileName
                     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
                         sh """
-                            git clone "https://minaxijoshi3101@:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
+                            git clone "https://minaxijoshi3101:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
                         """
                         dir("seh-students"){
                             // Checkout release/t3 branch
