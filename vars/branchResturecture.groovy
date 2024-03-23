@@ -39,7 +39,7 @@ pipeline {
                             sh """
                                 git add .
                                 git commit -m "cleanup"
-                                git push origin release/t3_1.2.3.4
+                                git push origin release/release_t3_1.2.3.4
                             """    
                         }
                     
