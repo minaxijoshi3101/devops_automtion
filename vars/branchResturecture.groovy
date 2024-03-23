@@ -36,7 +36,11 @@ pipeline {
                             }
                             
                             // Push new branch
-                            sh 'git push origin release/t3_1.2.3.4'
+                            sh """
+                                git add .
+                                git commit -m "cleanup"
+                                git push origin release/t3_1.2.3.4
+                            """    
                         }
                     
                     }
