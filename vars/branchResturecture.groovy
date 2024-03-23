@@ -15,7 +15,7 @@ pipeline {
                     def randomNumber = random.nextInt(1000)
                     def fileName = "test_${randomNumber}.txt"
                     println fileName
-                    withCredentials([String(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
                         sh """
                             git clone "https://${GIT_USERNAME}:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
                         """
