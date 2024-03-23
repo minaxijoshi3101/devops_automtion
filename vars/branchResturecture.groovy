@@ -1,12 +1,13 @@
-def call()
+def call(body)
 {
     pipeline{
         options{
             skipDefaultCheckout()
         }
-        agent {
-            label ''
-        }
+        /* agent {
+            label 'devops_automation'
+        } */
+        agent any
         stages{
             stage('Git Operations'){
                 steps{
