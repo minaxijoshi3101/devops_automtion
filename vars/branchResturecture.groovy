@@ -15,7 +15,7 @@ pipeline {
                     def randomNumber = random.nextInt(1000)
                     def fileName = "test_${randomNumber}.txt"
                     println fileName
-                    withCredentials([usernamePassword(credentialsId: 'devops_automation_buildUser', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'GITHUB_TOKEN', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                         sh """
                             git clone "https://${GIT_USERNAME}:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
                         """
@@ -39,7 +39,7 @@ pipeline {
                             sh """
                                 git add .
                                 git commit -m "cleanup"
-                                git push "https://${GIT_USERNAME}:1118a269715e91e16144ecae875f87060f@github.com/minaxijoshi3101/seh-students.git"
+                                git push "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/minaxijoshi3101/seh-students.git"
                                 #git push -f origin release/release_t3_1.2.3.4
                             """    
                         }
