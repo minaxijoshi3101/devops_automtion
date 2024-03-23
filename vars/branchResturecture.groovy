@@ -21,10 +21,10 @@
                             """
                             dir("seh-students"){
                                 // Checkout release/t3 branch
-                                sh 'git checkout release/t3'
+                                sh 'git checkout release/release_t3'
                                 sh 'git config http:sslVerify false'
                                 // Create and checkout new branch
-                                sh 'git checkout -b release/t3_1.2.3.4'
+                                sh 'git checkout -b release/release_t3_1.2.3.4'
                                 // Check if dbscripts folder exists
                                 def dbscriptsExists = fileExists('dbscripts')
                                 if (dbscriptsExists) {
