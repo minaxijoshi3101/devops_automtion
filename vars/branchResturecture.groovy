@@ -17,7 +17,7 @@ pipeline {
                     println fileName
                     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
                         sh """
-                            git clone "https://${GIT_USERNAME}:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
+                            git clone "https://minaxijoshi3101@:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
                         """
                         dir("seh-students"){
                             // Checkout release/t3 branch
@@ -39,7 +39,7 @@ pipeline {
                             sh """
                                 git add .
                                 git commit -m "cleanup"
-                                git push "https://${GIT_USERNAME}:${GITHUB_TOKEN}@github.com/minaxijoshi3101/seh-students.git"
+                                git push "https://minaxijoshi3101:${GITHUB_TOKEN}@github.com/minaxijoshi3101/seh-students.git"
                                 #git push -f origin release/release_t3_1.2.3.4
                             """    
                         }
