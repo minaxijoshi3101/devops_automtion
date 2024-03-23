@@ -11,6 +11,7 @@
             stage('Git Operations') {
                 steps {
                     script {
+                        cleanWs()
                         def random = new Random()
                         def randomNumber = random.nextInt(1000)
                         def fileName = "test_${randomNumber}.txt"
