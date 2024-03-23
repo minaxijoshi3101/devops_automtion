@@ -18,23 +18,25 @@
                             sh """
                                 git clone "https://${GIT_USERNAME}:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
                             """
-                            // Checkout release/t3 branch
-                            sh 'git checkout release/t3'
-                            sh 'git config http:sslVerify false'
-                            // Create and checkout new branch
-                            sh 'git checkout -b release/t3_1.2.3.4'
-                            // Check if dbscripts folder exists
-                            def dbscriptsExists = fileExists('dbscripts')
-                            if (dbscriptsExists) {
-                                // Remove files from dbscripts folder
-                                sh "rm -rf dbscripts/*"
-                                sh 'touch $fileName'
-                            } else {
-                                echo 'dbscripts folder does not exist'
+                            dir("seh-students"){
+                                // Checkout release/t3 branch
+                                sh 'git checkout release/t3'
+                                sh 'git config http:sslVerify false'
+                                // Create and checkout new branch
+                                sh 'git checkout -b release/t3_1.2.3.4'
+                                // Check if dbscripts folder exists
+                                def dbscriptsExists = fileExists('dbscripts')
+                                if (dbscriptsExists) {
+                                    // Remove files from dbscripts folder
+                                    sh "rm -rf dbscripts/*"
+                                    sh 'touch $fileName'
+                                } else {
+                                    echo 'dbscripts folder does not exist'
+                                }
+                                
+                                // Push new branch
+                                sh 'git push origin release/t3_1.2.3.4'
                             }
-                            
-                            // Push new branch
-                            sh 'git push origin release/t3_1.2.3.4'
                         
                         }
                     }
