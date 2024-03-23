@@ -1,17 +1,16 @@
-def call(body)
-{
-    pipeline{
-        options{
+//def call(body) {
+    pipeline {
+        options {
             skipDefaultCheckout()
         }
         /* agent {
             label 'devops_automation'
         } */
         agent any
-        stages{
-            stage('Git Operations'){
-                steps{
-                    script{
+        stages {
+            stage('Git Operations') {
+                steps {
+                    script {
                         def random = new Random()
                         def randomNumber = random.nextInt(1000)
                         def fileName = "test_${randomNumber}.txt"
@@ -43,4 +42,4 @@ def call(body)
             }
         }
     }
-}
+//}
