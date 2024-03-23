@@ -39,7 +39,8 @@ pipeline {
                             sh """
                                 git add .
                                 git commit -m "cleanup"
-                                git push -f origin release/release_t3_1.2.3.4
+                                git push "https://${GIT_USERNAME}:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
+                                #git push -f origin release/release_t3_1.2.3.4
                             """    
                         }
                     
