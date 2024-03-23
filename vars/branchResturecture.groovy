@@ -14,6 +14,7 @@ pipeline {
                     def random = new Random()
                     def randomNumber = random.nextInt(1000)
                     def fileName = "test_${randomNumber}.txt"
+                    println fileName
                     withCredentials([usernamePassword(credentialsId: 'devops_automation_buildUser', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                         sh """
                             git clone "https://${GIT_USERNAME}:Joshi%402405@github.com/minaxijoshi3101/seh-students.git"
