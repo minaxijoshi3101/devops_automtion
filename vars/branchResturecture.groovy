@@ -24,12 +24,14 @@ pipeline {
                             // Checkout release/t3 branch
                             sh 'git checkout release/release_t3'
                             //sh 'git config http:sslVerify false'
+                            // Fetch the latest remote branches
+                            sh 'git fetch --all --prune'
                             // Check if the branch already exists
-                            def branchExists = sh(script: "git show-ref --quiet refs/heads/${branchName}", returnStatus: true) == 0
-                            
+                            def branchExists = sh(script: "git ls-remote --exit-code --heads origin ${branchName}", returnStatus: true) == 0
                             if (branchExists) {
                                 echo "Branch ${branchName} already exists"
                                 sh "git checkout ${branchName}"
+                                sh "git pull origin ${branchName}"
                             }
                             else {
                             // Create and checkout new branch
@@ -48,7 +50,7 @@ pipeline {
                             
                             // Push new branch
                             sh """
-                                git pull
+                                git pull 
                                 git add .
                                 git commit -m "cleanup"
                                 git push "https://minaxijoshi3101:${GITHUB_TOKEN}@github.com/minaxijoshi3101/seh-students.git"
