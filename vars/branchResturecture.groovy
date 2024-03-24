@@ -48,6 +48,7 @@ pipeline {
                             
                             // Push new branch
                             sh """
+                                git pull
                                 git add .
                                 git commit -m "cleanup"
                                 git push "https://minaxijoshi3101:${GITHUB_TOKEN}@github.com/minaxijoshi3101/seh-students.git"
