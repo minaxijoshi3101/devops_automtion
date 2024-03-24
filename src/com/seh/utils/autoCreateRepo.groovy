@@ -20,7 +20,7 @@ def call(String repo,String appName) {
     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
         sh """
             #Execute cURL command to create the repository
-            command="curl -L -X POST -H Accept: application/vnd.github+json -H Authorization: Bearer ${GITHUB_TOKEN} -H "X-GitHub-Api-Version: 2022-11-28" -d ${repoConfigJson} ${githubUrl}"
+            command="curl -L -X POST -H Accept: application/vnd.github+json -H Authorization: Bearer ${GITHUB_TOKEN} -H X-GitHub-Api-Version: 2022-11-28 -d ${repoConfigJson} ${githubUrl}"
             echo "Executing: \${command}"
             \${command}
         """
