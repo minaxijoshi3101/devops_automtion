@@ -7,7 +7,7 @@ lanid='minaxi:minaxi'
 agent_ws_path=$1
 agent_secret=$2
 agent_name=$3
-jenkins_url="http://192.168.18.5:8080/"
+jenkins_url="http://192.168.18.5:8082/"
 
 echo "PLEASE CONFIRM AS BELOW INFO"
 echo "================================================="
@@ -29,7 +29,7 @@ echo $agent_secret > secret-file
 curl -sO "$jenkins_url/jnlpJars/agent.jar"
 chmod +x agent.jar
 #download java jdk from nexus repo
-curl -kO -u $lanid http://192.168.18.6:8082/repository/my-repo/jdk-21_linux-x64_bin.tar.gz
+curl -kO -u $lanid "${jenkins_url}/repository/my-repo/jdk-21_linux-x64_bin.tar.gz"
 tar -xvf jdk-21_linux-x64_bin.tar.gz
 rm -f jdk-21_linux-x64_bin.tar.gz
 #to import cerst on java
