@@ -1,1 +1,17 @@
-sudo dnf update -y
+sudo yum install epel-release
+sudo yum install snapd -y
+sudo systemctl enable --now snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install figlet
+snap install lolcat
+
+https://snapcraft.io/install/figlet/centos
+
+vi ~/.bashrc
+
+
+#printbanner
+figlet seh -c | lolcat
+figlet -f bubble -c "author: Minaxi Joshi"
+figlet -f digital -c "jenkins-slave1" | lolcat
+
