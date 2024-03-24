@@ -29,7 +29,7 @@
 </userRemoteConfigs>
 <branches>
 <hudson.plugins.git.BranchSpec>
-<name>*/developmet-hybrid</name>
+<name>*/development-hybrid</name>
 </hudson.plugins.git.BranchSpec>
 </branches>
 <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>

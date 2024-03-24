@@ -22,7 +22,7 @@ def call(body) {
                     APPLICATION_CODE = "${params.APP_CODE}"
                 }
                 stages {
-                    stage("Create view in Jenkins") {
+                    /* stage("Create view in Jenkins") {
                         steps {
                             script{
                                 Jenkins jenkins = Jenkins.getInstance()
@@ -48,12 +48,12 @@ def call(body) {
                                 }
                             }
                         }
-                    }
+                    } */
                     stage("Create Repos") {
                         steps {
                             script {
                                 for(repo in repoNames) {
-                                    new autoCreateRepos().call(repo,appName)
+                                    new autoCreateRepo().call(repo,appName)
                                 }
                             }
                         }   
