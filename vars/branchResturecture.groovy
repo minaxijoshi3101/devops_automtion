@@ -14,6 +14,7 @@ pipeline {
                     def random = new Random()
                     def randomNumber = random.nextInt(1000)
                     def fileName = "test_${randomNumber}.txt"
+                    def branchName = "release/release_t3_1.2.3.4"
                     println fileName
                     withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'GITHUB_TOKEN')]) {
                         sh """
@@ -23,8 +24,18 @@ pipeline {
                             // Checkout release/t3 branch
                             sh 'git checkout release/release_t3'
                             //sh 'git config http:sslVerify false'
+                            // Check if the branch already exists
+                            def branchExists = sh(script: "git show-ref --quiet refs/heads/${branchName}", returnStatus: true) == 0
+                            
+                            if (branchExists) {
+                                echo "Branch ${branchName} already exists"
+                                sh "git checkout ${branchName}"
+                            }
+                            else {
                             // Create and checkout new branch
-                            sh 'git checkout -b release/release_t3_1.2.3.4'
+                            echo "Branch ${branchName} doesn't exist"
+                            sh "git checkout -b ${branchName}"
+                            }
                             // Check if dbscripts folder exists
                             def dbscriptsExists = fileExists('cbo/dbscripts')
                             if (dbscriptsExists) {
