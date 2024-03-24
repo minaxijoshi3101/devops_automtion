@@ -9,7 +9,7 @@ def call(String repo,String appName) {
     def repoConfigJson = """
     {
     "name": "${repoName}",
-    "description":"This is your first repo",
+    "description":"Repo",
     "homepage":"https://github.com",
     "private": false,
     "is_template":true
